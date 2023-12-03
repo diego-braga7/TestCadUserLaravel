@@ -49,7 +49,9 @@
             "@php artisan key:generate --ansi"
         ],
         "cs": "./vendor/bin/phpcs --standard=phpcs.xml",
-        "cs:fix": "./vendor/bin/phpcbf --standard=phpcs.xml"
+        "cs:fix": "./vendor/bin/phpcbf --standard=phpcs.xml",
+        "test": "@php ./vendor/bin/phpunit --testdox --process-isolation",
+        "test:coverage": "@php ./vendor/bin/phpunit --testdox --coverage-text --coverage-html ./storage/coverage/report  --process-isolation"
     },
     "extra": {
         "laravel": {
