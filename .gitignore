@@ -16,3 +16,16 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+bootstrap/compiled.php
+app/storage/
+public/storage/
+public/hot/
+public_html/storage/
+public_html/hot/
+Homestead.yaml
+Homestead.json
+/.vagrant
+storage/*.key
+.phpunit.result.cache
+.cache
