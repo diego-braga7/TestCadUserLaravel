@@ -12,21 +12,30 @@ class UserController extends AbstractRestController
 {
     public function __construct(private AbstractService $service)
     {
-        // parent::__construct($service);
     }
 
     public function index(): JsonResponse|JsonResource
     {
-        // $this->service->save(['name' => 'Teste']);
+        return $this->service->findAll();
+    }
 
-        return response()->json(['message' => 'Hello World!']);
+    public function show($id): JsonResponse|JsonResource
+    {
+        return $this->service->findOne($id);
     }
 
     public function store(Request $request): JsonResponse|JsonResource
     {
-
         return $this->service->save($request->all());
+    }
 
-        // return response()->json(['message' => 'Hello World!']);
+    public function destroy($id): JsonResponse|JsonResource
+    {
+        return $this->service->delete($id);
+    }
+
+    public function update(Request $request, $id): JsonResponse|JsonResource
+    {
+        return $this->service->update($request->all(), $id);
     }
 }

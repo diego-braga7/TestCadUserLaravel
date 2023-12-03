@@ -2,42 +2,21 @@
 
 namespace App\Services\Abstracts;
 
-abstract class AbstractService
+use App\Services\Contracts\InterfaceService;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\JsonResource;
+
+abstract class AbstractService implements InterfaceService
 {
     protected $model;
 
-    public function __construct(
-        // Model $model
-    ) {
-        // $this->model = $model;
-    }
+    abstract public function save(array $data): JsonResponse|JsonResource;
 
-    // public function index()
-    // {
-    //     return $this->model->all();
-    // }
+    abstract public function findOne(int $id): JsonResponse|JsonResource;
 
-    // public function show($id)
-    // {
-    //     return $this->model->findOrFail($id);
-    // }
+    abstract public function findAll(): JsonResponse|JsonResource;
 
-    // public function update(Request $request, $id)
-    // {
-    //     $this->model->findOrFail($id)->update($request->all());
-    //     return $this->model->findOrFail($id);
-    // }
+    abstract public function delete(int $id): JsonResponse|JsonResource;
 
-    // public function destroy($id)
-    // {
-    //     $this->model->findOrFail($id)->delete();
-    //     return response()->json(['message' => 'Deleted successfully']);
-    // }
-
-    abstract public function save(array $data);
-
-    // public function store(Request $request)
-    // {
-    //     return $this->model->create($request->all());
-    // }
+    abstract public function update(array $data, $id): JsonResponse|JsonResource;
 }

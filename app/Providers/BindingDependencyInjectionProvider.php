@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use App\Http\Controllers\Api\UserController;
-use App\Http\Repositories\Abstracts\AbstractRepository;
-use App\Http\Repositories\UserRepository;
+use App\Repositories\Abstracts\AbstractRepository;
+use App\Repositories\UserRepository;
 use App\Services\Abstracts\AbstractService;
 use App\Services\UserService;
 use Illuminate\Support\ServiceProvider;
