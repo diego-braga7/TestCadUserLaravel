@@ -1,6 +1,5 @@
 <?php
-
-namespace App\validations;
+namespace App\validations\Api;
 
 use App\validations\Abstracts\AbstractValidation;
 
