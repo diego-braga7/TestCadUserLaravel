@@ -1,8 +1,14 @@
 {
-    "name": "laravel/laravel",
+    "name": "diego-braga7/cadastro-de-usuarios",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "description": "Um sistema de cadastro de usuários utilizando o framework Laravel.",
+    "keywords": ["laravel", "cadastro de usuários"],
+    "authors": [
+        {
+            "name": "Diego de Oliveira Braga",
+            "email": "diegobraga7@gmail.com"
+        }
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
