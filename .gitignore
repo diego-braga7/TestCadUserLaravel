@@ -29,3 +29,7 @@ Homestead.json
 storage/*.key
 .phpunit.result.cache
 .cache
+
+# Laravel 4 specific
+bootstrap/compiled.php
+storage

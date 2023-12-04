@@ -18,9 +18,9 @@ class UserService extends AbstractService
     {
         try {
             $user = $this->repository->findOne($id);
-            return response()->json(['message' => 'Found successfully', 'data' => $user], Response::HTTP_OK);
+            return $this->jsonResponse(['message' => 'Found successfully', 'data' => $user], Response::HTTP_OK);
         } catch (\Exception $e) {
-            return response()->json(
+            return $this->jsonResponse(
                 ['message' => 'Error when finding', 'data' => $e->getMessage()
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
@@ -32,9 +32,9 @@ class UserService extends AbstractService
     {
         try {
             $user = $this->repository->save($this->preparePassword($data));
-            return response()->json(['message' => 'Created successfully', 'data' => $user], Response::HTTP_CREATED);
+            return $this->jsonResponse(['message' => 'Created successfully', 'data' => $user], Response::HTTP_CREATED);
         } catch (\Exception $e) {
-            return response()->json(
+            return $this->jsonResponse(
                 ['message' => 'Error when creating', 'data' => $e->getMessage()
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
@@ -52,9 +52,9 @@ class UserService extends AbstractService
     {
         try {
             $users = $this->repository->findAll();
-            return response()->json(['message' => 'Found successfully', 'data' => $users], Response::HTTP_OK);
+            return $this->jsonResponse(['message' => 'Found successfully', 'data' => $users], Response::HTTP_OK);
         } catch (\Exception $e) {
-            return response()->json(
+            return $this->jsonResponse(
                 ['message' => 'Error when finding', 'data' => $e->getMessage()
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
@@ -62,16 +62,17 @@ class UserService extends AbstractService
         }
     }
 
+
     public function delete($id): JsonResponse|JsonResource
     {
         try {
             $deleted = $this->repository->delete($id);
             if (! $deleted) {
-                return response()->json(['message' => 'Not found'], Response::HTTP_NOT_FOUND);
+                return $this->jsonResponse(['message' => 'Not found'], Response::HTTP_NOT_FOUND);
             }
-            return response()->json(['message' => 'Deleted successfully'], Response::HTTP_OK);
+            return $this->jsonResponse(['message' => 'Deleted successfully'], Response::HTTP_OK);
         } catch (\Exception $e) {
-            return response()->json(
+            return $this->jsonResponse(
                 ['message' => 'Error when deleting', 'data' => $e->getMessage()
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
@@ -83,9 +84,9 @@ class UserService extends AbstractService
     {
         try {
             $user = $this->repository->update($data, $id);
-            return response()->json(['message' => 'Updated successfully', 'data' => $user], Response::HTTP_OK);
+            return $this->jsonResponse(['message' => 'Updated successfully', 'data' => $user], Response::HTTP_OK);
         } catch (\Exception $e) {
-            return response()->json(
+            return  $this->jsonResponse(
                 ['message' => 'Error when updating', 'data' => $e->getMessage()
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
