@@ -4,14 +4,18 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\Abstracts\AbstractRestController;
 use App\Services\Abstracts\AbstractService;
+use App\validations\Abstracts\AbstractValidation;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Response;
 
 class UserController extends AbstractRestController
 {
-    public function __construct(private AbstractService $service)
-    {
+    public function __construct(
+        private AbstractService $service,
+        private AbstractValidation $validation
+    ) {
     }
 
     public function index(): JsonResponse|JsonResource
@@ -26,6 +30,11 @@ class UserController extends AbstractRestController
 
     public function store(Request $request): JsonResponse|JsonResource
     {
+        $validator = $this->validation->make($request->all());
+
+        if ($validator->fails()) {
+            return $this->jsonResponse([$validator->errors()], Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
         return $this->service->save($request->all());
     }
 

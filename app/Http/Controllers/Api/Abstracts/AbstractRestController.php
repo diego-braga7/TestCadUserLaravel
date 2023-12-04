@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Http\Controllers\Api\Contracts\InterfaceRestController;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Response;
 
 abstract class AbstractRestController extends Controller implements InterfaceRestController
 {
@@ -41,6 +42,11 @@ abstract class AbstractRestController extends Controller implements InterfaceRes
 
     protected function httpResponseMethodNotAllowed(): JsonResponse
     {
-        return response()->json(['error' => 'Method Not Allowed'], 405);
+        return $this->jsonResponse(['message' => 'Method not allowed'], Response::HTTP_METHOD_NOT_ALLOWED);
+    }
+
+    protected function jsonResponse(array $data, int $statusCode): JsonResponse
+    {
+        return response()->json($data, $statusCode);
     }
 }

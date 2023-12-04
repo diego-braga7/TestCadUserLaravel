@@ -8,6 +8,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
 
 use function response;
+
 abstract class AbstractService implements InterfaceService
 {
     protected $model;
