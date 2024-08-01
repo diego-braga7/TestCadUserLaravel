@@ -41,4 +41,4 @@ http://localhost/user/register
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The Laravel framework222 is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
